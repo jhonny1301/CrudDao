@@ -80,9 +80,40 @@ public class Main {
 
                     Informacion infoActualizar = dao.obtenerPorId(idActualizar);
                     if (infoActualizar != null) {
-                        System.out.print("Nuevo email: ");
-                        String nuevoEmail = scanner.nextLine();
-                        infoActualizar.setEmail(nuevoEmail);
+                        System.out.println("Seleccione el campo a actualizar:");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Apellido");
+                        System.out.println("3. Sexo");
+                        System.out.println("4. Email");
+                        System.out.print("Opción: ");
+                        int opcionCampo = scanner.nextInt();
+                        scanner.nextLine(); // Consumir la nueva línea
+
+                        switch (opcionCampo) {
+                            case 1:
+                                System.out.print("Nuevo nombre: ");
+                                String nuevoNombre = scanner.nextLine();
+                                infoActualizar.setPrimerNombre(nuevoNombre);
+                                break;
+                            case 2:
+                                System.out.print("Nuevo apellido: ");
+                                String nuevoApellido = scanner.nextLine();
+                                infoActualizar.setPrimerApellido(nuevoApellido);
+                                break;
+                            case 3:
+                                System.out.print("Nuevo sexo (M/F): ");
+                                String nuevoSexo = scanner.nextLine();
+                                infoActualizar.setSexo(nuevoSexo);
+                                break;
+                            case 4:
+                                System.out.print("Nuevo email: ");
+                                String nuevoEmail = scanner.nextLine();
+                                infoActualizar.setEmail(nuevoEmail);
+                                break;
+                            default:
+                                System.out.println("Opción no válida.");
+                        }
+
                         dao.actualizar(infoActualizar);
                     } else {
                         System.out.println("Registro no encontrado.");
@@ -117,6 +148,7 @@ public class Main {
         scanner.close();
     }
 }
+
 
 
 
